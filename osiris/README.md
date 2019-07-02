@@ -1,21 +1,23 @@
 # Osiris
 
-**TODO: Add description**
+Osiris is a suite of helper functions for personal Elixir projects.
 
-## Installation
+## Maps
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `osiris` to your list of dependencies in `mix.exs`:
+### Selective reduce
 
-```elixir
-def deps do
-  [
-    {:osiris, "~> 0.1.0"}
-  ]
-end
+Takes a list of desired keys and a map with said keys and returns a new map with the selected keys and the values from the original map.
+
+```
+Osiris.Map.selective_reduce([:one, :two, :three], %{one: "foo", two: "bar", three: "zap", password: "sekreit"})
+%{one: "foo", two: "bar", three: "zap"}
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/osiris](https://hexdocs.pm/osiris).
+## Lists
 
+### Filter nil entries
+
+```
+Osiris.List.filter_nil(["one", "two", nil, "three"])
+["one, "two", "three"]
+```
