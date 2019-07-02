@@ -13,9 +13,39 @@ Osiris.Map.selective_reduce([:one, :two, :three], %{one: "foo", two: "bar", thre
 %{one: "foo", two: "bar", three: "zap"}
 ```
 
+### Filter nil
+
+Takes a map and returns a new map with only keys that have values *other than* `nil`
+
+```
+Osiris.Map.filter_nil(%{bar: "foo", zap: nil})
+%{bar: "foo"}
+```
+
+### Get nested key
+
+Safely get once or two nested keys from a map, will return `nil` if not present
+
+```
+Osiris.Map.get_nested_key(%{foo: %{bar: %{zap: "poof"}}}, :foo, :bar, :zap)
+"poof"
+```
+
+```
+Osiris.Map.get_nested_key(%{foo: %{bar: %{zap: "poof"}}}, :foo, :bar)
+%{zap: "poof"}
+```
+
+```
+Osiris.Map.get_nested_key(%{foo: %{bar: %{zap: "poof"}}}, :foo, :bar, :poof)
+nil
+```
+
 ## Lists
 
 ### Filter nil entries
+
+Remove all entries from list that are equal to `nil`
 
 ```
 Osiris.List.filter_nil(["one", "two", nil, "three"])

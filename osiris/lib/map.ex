@@ -2,8 +2,6 @@ defmodule Osiris.Map do
   # Module containing a variety of map helpers
   require Logger
 
-  #[one, two, three], %{one: "foo", two: "bar"}
-  # %{one: "foo", }
   def selective_reduce(keys, map) do
     keys
     |> Enum.map(fn key ->
