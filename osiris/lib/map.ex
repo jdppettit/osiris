@@ -26,7 +26,14 @@ defmodule Osiris.Map do
 
   def atomify(map) do
     map
-    |> Map.new(fn {k, v} -> {String.to_atom(k), v} end)
+    |> Map.new(fn {k, v} ->
+      case is_atom(k) do
+        true ->
+          {k, v}
+        false ->
+          {String.to_atom(k), v}
+      end
+    end)
   end
 
   def get_nested_key(map, key1, key2) do

@@ -13,6 +13,15 @@ Osiris.Map.selective_reduce([:one, :two, :three], %{one: "foo", two: "bar", thre
 %{one: "foo", two: "bar", three: "zap"}
 ```
 
+### Atomify keys
+
+Takes a map and converts all non-atom keys to atoms.
+
+```
+Osiris.Map.atomify(%{"foo" => "bar", :zap => "foo"})
+%{foo => "bar", zap => "foo"}
+```
+
 ### Filter nil
 
 Takes a map and returns a new map with only keys that have values *other than* `nil`
