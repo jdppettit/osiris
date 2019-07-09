@@ -24,6 +24,11 @@ defmodule Osiris.Map do
     |> Enum.into(%{})
   end
 
+  def atomify(map) do
+    map
+    |> Map.new(fn {k, v} -> {String.to_atom(k), v} end)
+  end
+
   def get_nested_key(map, key1, key2) do
     value1 = Map.get(map, key1)
     if is_nil(value1) do
