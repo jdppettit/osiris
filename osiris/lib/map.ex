@@ -36,10 +36,8 @@ defmodule Osiris.Map do
     end)
   end
 
-  def get_nested_key(map, keys) when length(keys) == 0, do: map
-  def get_nested_key(map, keys) when is_list(keys) and is_map(map) do
-    key = Enum.at(keys, 0)
-    keys = keys -- [key]
+  def get_nested_key(map, []), do: map
+  def get_nested_key(map = %{}, [key | keys]) do
     map = Map.get(map, key)
     get_nested_key(map, keys)
   end
